@@ -1,0 +1,23 @@
+{
+  "name": "lualabs-app",
+  "version": "1.0.0",
+  "description": "Aplicação React + Node.js para LuaLabs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "cd frontend && npm run build",
+    "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install --production"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "keywords": ["react", "nodejs", "express", "hostgator", "lualabs"],
+  "author": "LuaLabs",
+  "license": "MIT"
+}
