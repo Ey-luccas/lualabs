@@ -28,17 +28,20 @@ cd backend
 npm install --production
 cd ..
 
-# Copiar arquivos para public_html
-echo "📁 Copiando arquivos para public_html..."
-cp -r frontend/dist/* public_html/
-cp backend/server.js public_html/
-cp backend/package.json public_html/
-cp backend/package-lock.json public_html/
-cp .htaccess public_html/
+# Copiar arquivos para pasta de deploy específica
+DEPLOYPATH=public_html/lualabs.com.br
+echo "📁 Copiando arquivos para $DEPLOYPATH..."
+mkdir -p "$DEPLOYPATH"
+rm -rf "$DEPLOYPATH"/*
+cp -r frontend/dist/* "$DEPLOYPATH"/
+cp backend/server.js "$DEPLOYPATH"/
+cp backend/package.json "$DEPLOYPATH"/
+cp backend/package-lock.json "$DEPLOYPATH"/ 2>/dev/null || true
+cp .htaccess "$DEPLOYPATH"/
 
-# Instalar dependências na pasta public_html
-echo "🔧 Instalando dependências em public_html..."
-cd public_html
+# Instalar dependências na pasta de deploy
+echo "🔧 Instalando dependências em $DEPLOYPATH..."
+cd "$DEPLOYPATH"
 npm install --production
 cd ..
 

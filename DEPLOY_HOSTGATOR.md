@@ -14,7 +14,7 @@
 ### 2. Configurar Node.js
 1. **Node.js Selector:**
    - Selecione a versão do Node.js (recomendado: 18.x ou superior)
-   - **Application Root:** `public_html`
+   - **Application Root:** `public_html/lualabs.com.br`
    - **Application URL:** `seu-dominio.com`
    - **Application Startup File:** `server.js`
 
@@ -22,10 +22,10 @@
 1. **Git Version Control:**
    - **Repository URL:** `https://github.com/Ey-luccas/lualabs.git`
    - **Branch:** `main`
-   - **Deploy Path:** `public_html`
+   - **Deploy Path:** `public_html/lualabs.com.br`
 
 ### 4. Configurar Variáveis de Ambiente
-Crie um arquivo `.env` na pasta `public_html`:
+Crie um arquivo `.env` na pasta `public_html/lualabs.com.br`:
 ```env
 PORT=3000
 NODE_ENV=production

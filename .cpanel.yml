@@ -1,15 +1,25 @@
 ---
 deployment:
   tasks:
+    - export DEPLOYPATH=/home/ey-luccas/public_html/lualabs.com.br
     - export NPM_CONFIG_PREFIX=/home/ey-luccas/.npm-global
     - export PATH=$PATH:/home/ey-luccas/.npm-global/bin
     - node --version
     - npm --version
-    - npm install
+    - npm ci || npm install
     - cd frontend
-    - npm install
+    - npm ci || npm install
     - npm run build
     - cd ../backend
-    - npm install --production
+    - npm ci --omit=dev || npm install --production
     - cd ..
-    - echo "Build completed successfully"
+    - mkdir -p $DEPLOYPATH
+    - rm -rf $DEPLOYPATH/*
+    - cp -r frontend/dist/* $DEPLOYPATH/
+    - cp backend/server.js $DEPLOYPATH/
+    - cp backend/package.json $DEPLOYPATH/
+    - cp backend/package-lock.json $DEPLOYPATH/ || true
+    - cp .htaccess $DEPLOYPATH/
+    - cd $DEPLOYPATH
+    - npm ci --omit=dev || npm install --production
+    - echo "Deploy completed to $DEPLOYPATH"
